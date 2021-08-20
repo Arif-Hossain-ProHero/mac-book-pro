@@ -1,0 +1,12 @@
+.delivery-cost {
+  border-bottom: 2px solid black;
+  padding-bottom: 12px;
+}
+.item {
+  transition: all 0.7s;
+}
+.item:hover {
+  background-color: #1e1e1e;
+  cursor: pointer;
+  color: white;
+}
