@@ -15,3 +15,8 @@
   cursor: pointer;
   color: white;
 }
+
+.promo-eror {
+  display: none;
+  color: red;
+}

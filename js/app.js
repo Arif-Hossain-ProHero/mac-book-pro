@@ -7,7 +7,7 @@ function memoryPricing(size){
     else if(size == '16gb'){
         memoryCost.innerText = 180;
     }
-    total();
+    totalCalculation();
 }
 //Memory click handling
 document.getElementById('memory-8gb').addEventListener('click', function(){
@@ -29,7 +29,7 @@ function storagePricing(size){
         else if(size == '1tb'){
             storageCost.innerText = 180;
         }
-        total()
+        totalCalculation()
 }
 //Storage click handling
 document.getElementById('storage-256gb').addEventListener('click', function(){
@@ -43,39 +43,54 @@ document.getElementById('storage-1tb').addEventListener('click', function(){
 })
 
 //Delivery cost
-function deliveryCost(id){
-    const cost = document.getElementById('delivery-cost');
-    if(id == 'free-delivery'){
-        cost.innerText = 0;
+function deliveryCostCalculting(cost){
+    const deliveryCost = document.getElementById('delivery-cost');
+    if(cost == 'free'){
+        deliveryCost.innerText = 0;
     }
     else{
-        cost.innerText = 20;
+        deliveryCost.innerText = 20;
     }
-    total()
+    totalCalculation()
 }
 //Delivery click handling
 document.getElementById('free-delivery').addEventListener('click', function(){
-    deliveryCost('free-delivery');
+    deliveryCostCalculting('free');
 });
 document.getElementById('delivery').addEventListener('click', function(){
-    deliveryCost('delivery');
+    deliveryCostCalculting('cost');
 });
 
 
 //Total price counting
-function total(){
+function totalCalculation(){
     const totalPriceText = document.getElementById('total-price');
     const memoryPrice = document.getElementById('memory-cost').innerText;
     const storagePrice = document.getElementById('storage-cost').innerText;
     const deliveryPrice = document.getElementById('delivery-cost').innerText;
     totalPriceText.innerText = 1299 + parseInt(memoryPrice) + parseInt(storagePrice) + parseInt(deliveryPrice);
-    //Total calculating with promo code
-    let totalWithcode = document.getElementById('total-with-code');
-    totalWithcode.innerText = totalPriceText.innerText;
+    //Total calculating without promo code
+    let totalWithoutCode = document.getElementById('total-with-code');
+    totalWithoutCode.innerText = totalPriceText.innerText;
+}
+
+
+// cheking promo code validation
+function checkPromoCode(){
+    let totalPriceText = document.getElementById('total-price').innerText;
+    const preTotal = document.getElementById('total-with-code');
+    const promoError = document.getElementById('promo-error');
+    let preTotalValue = totalPriceText;
     const codeInput = document.getElementById('code-input');
     const codeValue = codeInput.value;
     if(codeValue == 'stevekaku'){
-        totalWithcode.innerText = (totalPriceText.innerText) - (totalPriceText.innerText/5); 
+        preTotal.innerText = parseInt(preTotalValue) - (preTotalValue/5); 
+        promoError.style.display = 'none';
+        preTotalValue = totalPriceText;
+        console.log(preTotalValue);
+    }
+    else{
+        promoError.style.display = 'block';
     }
     codeInput.value = "";
 }
