@@ -1,4 +1,4 @@
-//Memory Pricing
+//---------------Memory Pricing---------------
 function memoryPricing(size){
     const memoryCost = document.getElementById('memory-cost');
     if(size == '8gb'){
@@ -17,7 +17,7 @@ document.getElementById('memory-16gb').addEventListener('click', function(){
     memoryPricing('16gb');
 })
 
-//Storage Pricing 
+//---------Storage Pricing-------------- 
 function storagePricing(size){
         const storageCost = document.getElementById('storage-cost');
         if(size == '256gb'){
@@ -42,7 +42,7 @@ document.getElementById('storage-1tb').addEventListener('click', function(){
     storagePricing('1tb');
 })
 
-//Delivery cost
+//-------------Delivery cost-------------------
 function deliveryCostCalculting(cost){
     const deliveryCost = document.getElementById('delivery-cost');
     if(cost == 'free'){
@@ -62,7 +62,7 @@ document.getElementById('delivery').addEventListener('click', function(){
 });
 
 
-//Total price counting
+//----------------Total price counting------------------
 function totalCalculation(){
     const totalPriceText = document.getElementById('total-price');
     const memoryPrice = document.getElementById('memory-cost').innerText;
@@ -75,7 +75,7 @@ function totalCalculation(){
 }
 
 
-// cheking promo code validation
+//----------------checking promo code validation------------------
 function checkPromoCode(){
     let totalPriceText = document.getElementById('total-price').innerText;
     const preTotal = document.getElementById('total-with-code');
